@@ -1,0 +1,11 @@
+.header {
+    justify-self: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 98%;
+    height: 50px;
+    margin-top: 10px;
+    border-radius: 5px;
+    background-color: #9822FF;
+}
