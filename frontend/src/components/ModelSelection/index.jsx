@@ -1,11 +1,13 @@
 import { BRANDS, MODELS } from "../../phones"
 import "./style.css"
 import { useState, useEffect } from "react"
+import { useNavigate } from 'react-router-dom'
 import ModelSlider from "../ModelSlider"
 
 export default function ModelSelection() {
     const [chosenBrand, setChosenBrand] = useState(BRANDS[0].key)
     const [chosenModel, setChosenModel] = useState(MODELS[BRANDS[0].key][0].value)
+    const navigate = useNavigate()
 
     useEffect(() => {
         const first = MODELS[chosenBrand] && MODELS[chosenBrand][0]
@@ -16,7 +18,7 @@ export default function ModelSelection() {
         <div className="model_selection">
         <div className="model_selection_container">
             <label style={{ display: "flex", flexDirection: "row", gap: "5px" }}>
-                Марка телефона
+                <label htmlFor="phone_brand">Марка</label>
                 <select
                     name="phone_brand"
                     id="phone_brand"
@@ -31,7 +33,7 @@ export default function ModelSelection() {
                 </select>
             </label>
             <label style={{ display: "flex", flexDirection: "row", gap: "5px" }}>
-                Модель телефона
+                <label htmlFor="phone_model">Модель</label>
                 <select
                     name="phone_model"
                     id="phone_model"
@@ -51,6 +53,7 @@ export default function ModelSelection() {
                 chosenModel={chosenModel}
                 onSelectModel={setChosenModel}
             />
+        <button onClick={() => navigate(`/constuctor/${chosenBrand}/${chosenModel}`, { state: { chosenBrand, chosenModel } })}>Выбрать чехол</button>
         </div>
     )
 }

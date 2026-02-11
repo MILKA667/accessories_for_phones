@@ -12,6 +12,7 @@ export default function ModelSlider({ chosenBrand, chosenModel, onSelectModel })
             key={model.value}
             onClick={() => onSelectModel(model.value)}
           >
+            <img src={model.image} alt={model.label} />
             {model.label}
           </div>
         )

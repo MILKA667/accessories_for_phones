@@ -1,0 +1,61 @@
+/* Settings sidebar styles */
+.settings {
+  width: 320px;
+  min-width: 260px;
+  background: #ffffff;
+  border-left: 1px solid #eee;
+  padding: 16px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.settings_header h3 {
+  margin: 0 0 6px 0;
+  font-size: 18px;
+}
+
+.settings_menu {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow: auto;
+}
+
+.settings_section h4 {
+  margin: 0 0 6px 0;
+  font-size: 14px;
+}
+
+.color_picker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.color_text {
+  border: 1px solid #ddd;
+  padding: 6px 8px;
+  border-radius: 4px;
+  width: 96px;
+}
+
+.stikers, .text {
+  min-height: 40px;
+  border: 1px dashed #eee;
+  padding: 8px;
+  border-radius: 6px;
+  background: #fafafa;
+}
+
+/* small responsive tweak */
+@media (max-width: 900px) {
+  .settings {
+    width: 100%;
+    min-width: 0;
+    order: 2;
+    border-left: none;
+    border-top: 1px solid #eee;
+  }
+}

@@ -1,0 +1,18 @@
+.constructor {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  padding: 20px;
+  box-sizing: border-box;
+  justify-self:  center;
+  width: 85%;
+}
+
+.preview {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 480px;
+}
+
