@@ -1,0 +1,89 @@
+.auth_backdrop{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.auth_modal{
+  position: relative;
+  width: 420px;
+  padding: 26px 28px 22px;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.auth_tabs{
+  display: flex;
+  gap: 8px;
+  background: #f3f3ff;
+  border-radius: 999px;
+  padding: 3px;
+}
+
+.auth_tab{
+  flex: 1;
+  border: none;
+  background: transparent;
+  border-radius: 999px;
+  padding: 6px 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.auth_tab_active{
+  background: #4C61E5;
+  color: #ffffff;
+}
+
+.auth_form{
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.auth_field{
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+}
+
+.auth_field input{
+  border-radius: 8px;
+  border: 1px solid #d0d3ff;
+  padding: 8px 10px;
+  font-size: 13px;
+}
+
+.auth_submit{
+  margin-top: 4px;
+  border-radius: 999px;
+  border: none;
+  padding: 8px 12px;
+  font-weight: 600;
+  font-size: 14px;
+  background: #4C61E5;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.auth_close{
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+

@@ -1,26 +1,48 @@
 import "./style.css"
 
-export default function Header() {
-    let username = null;
-    username = localStorage.getItem("nickname");
+export default function Header({ activeTab, onChangeTab, onOpenAuth, username }) {
+  return (
+    <div className="header">
+      <div className="logo">
+        <img src="logo.png" alt="" />
+        Binary Beasts
+      </div>
 
+      <nav className="menu">
+        <li
+          className={
+            "menu_item" + (activeTab === "models" ? " menu_item_active" : "")
+          }
+          onClick={() => onChangeTab("models")}
+        >
+          Выбор модели
+        </li>
+        <li
+          className={
+            "menu_item" +
+            (activeTab === "constructor" ? " menu_item_active" : "")
+          }
+          onClick={() => onChangeTab("constructor")}
+        >
+          Конструктор
+        </li>
+        <li
+          className={
+            "menu_item" + (activeTab === "profile" ? " menu_item_active" : "")
+          }
+          onClick={() => onChangeTab("profile")}
+        >
+          Профиль
+        </li>
 
-    return (
-        <div className="header">
-            <div className="logo">
-                <img src="logo.png" alt="" />
-                accessories_for_phones
-            </div>
-
-            {username ? (
-                <div className="username">{username}</div>  
-            ) : (
-                <label style={{ display: "flex", flexDirection: "row"}}>
-                    <div className="login_button">Войти</div>
-                    <span>|</span>
-                    <div className="reg_button">Зарегистрироваться</div>
-                </label>
-            )}
-        </div>
-    );
+        {username ? (
+          <div className="username">{username}</div>
+        ) : (
+          <button className="login_button" type="button" onClick={onOpenAuth}>
+            Войти
+          </button>
+        )}
+      </nav>
+    </div>
+  )
 }
