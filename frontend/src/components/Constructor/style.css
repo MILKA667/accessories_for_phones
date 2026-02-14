@@ -4,15 +4,263 @@
   align-items: flex-start;
   padding: 20px;
   box-sizing: border-box;
-  justify-self:  center;
-  width: 85%;
+  width: 100%;
 }
 
-.preview {
-  flex: 1 1 auto;
+.preview-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 500px;
+  gap: 16px;
+}
+
+.phone-preview {
+  position: relative;
+  width: 600px;
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 480px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.phone-preview img {
+  position: relative;
+  z-index: 10;
+  max-width: 100%;
+  height: auto;
+}
+
+.stickers-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 20;
+}
+
+.controls-hint {
+  font-size: 13px;
+  color: #999;
+  text-align: center;
+  min-height: 20px;
+}
+
+.sticker-wrapper {
+  position: absolute;
+  cursor: move;
+  transition: transform 0.1s;
+  border: 2px solid transparent;
+  pointer-events: auto;
+}
+
+.sticker-wrapper.selected {
+  border: 2px solid #0066cc;
+  border-radius: 4px;
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+}
+
+.sticker-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+  display: block;
+}
+
+.sticker-wrapper:hover {
+  z-index: 20;
+}
+
+.control-btn {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #ff6b6b;
+  color: white;
+  border: 2px solid white;
+  cursor: pointer;
+  font-size: 16px;
+  opacity: 1;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  z-index: 30;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.control-btn:hover {
+  background: #ff5252;
+  transform: scale(1.1);
+}
+
+.control-btn:active {
+  transform: scale(0.95);
+}
+
+.resize-handle {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #0066cc;
+  border: 2px solid white;
+  border-radius: 2px;
+  cursor: nwse-resize;
+  opacity: 0;
+  transition: opacity 0.2s;
+  z-index: 25;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.sticker-wrapper.selected .resize-handle {
+  opacity: 1;
+}
+
+.resize-handle.se {
+  bottom: -10px;
+  right: -10px;
+}
+
+.rotate-handle {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28px;
+  height: 28px;
+  background: #0066cc;
+  color: white;
+  border: 2px solid white;
+  border-radius: 50%;
+  cursor: grab;
+  opacity: 0;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  z-index: 30;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  user-select: none;
+}
+
+.sticker-wrapper.selected .rotate-handle {
+  opacity: 1;
+}
+
+.rotate-handle:hover {
+  background: #0052a3;
+  transform: translateX(-50%) scale(1.1);
+}
+
+.rotate-handle:active {
+  cursor: grabbing;
+}
+
+.order-panel {
+  width: 300px;
+  background: white;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: fit-content;
+  position: sticky;
+  top: 20px;
+}
+
+.order-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.order-info h3 {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+}
+
+.order-info p {
+  margin: 0;
+  font-size: 13px;
+  color: #666;
+  display: flex;
+  justify-content: space-between;
+}
+
+.order-btn {
+  width: 100%;
+  padding: 12px;
+  background: #0066cc;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.order-btn:hover {
+  background: #0052a3;
+}
+
+.order-btn:active {
+  transform: scale(0.98);
+}
+
+.text-wrapper {
+  position: absolute;
+  cursor: move;
+  border: 2px solid transparent;
+  padding: 4px 8px;
+  pointer-events: auto;
+}
+
+.text-wrapper.selected {
+  border: 2px solid #0066cc;
+  border-radius: 4px;
+  background: rgba(0, 102, 204, 0.1);
+}
+
+.text-content {
+  pointer-events: none;
+  user-select: none;
+  font-weight: 500;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.text-wrapper.selected .remove-btn {
+  opacity: 1;
+}
+
+@media (max-width: 900px) {
+  .constructor {
+    flex-direction: column;
+  }
+
+  .order-panel {
+    width: 100%;
+    position: static;
+  }
+
+  .phone-preview {
+    width: 100%;
+    max-width: 400px;
+  }
 }
 
